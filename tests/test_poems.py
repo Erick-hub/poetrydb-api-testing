@@ -14,14 +14,18 @@ class TestPoems():
         self.get_poems = GetPoems()
         res = self.get_poems.by_title(
             "from Jubilate Agno, Fragment B, lines 695-768")
+        assert len(res) == 1
         assert res[0]['author'] == "Christopher Smart"
         assert int(res[0]['linecount']) == len(res[0]['lines'])
 
     def test_get_poem_by_linecount(self):
+        linecount = 77
         self.get_poems = GetPoems()
-        res = self.get_poems.by_linecount(77)
+        res = self.get_poems.by_linecount(linecount)
         assert "from Jubilate Agno, Fragment B, lines 695-768" in [
             x['title'] for x in res]
+        for x in res:
+            assert int(x['linecount']) == linecount
 
     def test_get_all_authors(self):
 
