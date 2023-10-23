@@ -33,4 +33,4 @@ class TestPoems(BaseTest):
         res = self.get_author.get_all_authors()
         assert len(res['authors']) == 129
         assert res['authors'][128] == 'William Wordsworth'
-        assert self.sample['title'] in res['authors']
+        assert self.sample['author'] in res['authors']
